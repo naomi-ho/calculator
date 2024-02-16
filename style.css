@@ -1,7 +1,31 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
 body {
     background-color: rgb(67, 91, 120);
     color: white;
-    font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .display {
@@ -10,6 +34,16 @@ body {
     height: 120px;
     margin-bottom: 4px;
     border-radius: 10px 10px 0px 0px;
+    text-align: right;
+}
+
+p {
+    margin: auto;
+    padding-top: 25px;
+    padding-right: 35px;
+
+    font-size: 60px;
+    margin-top: 0px;
 }
 
 button {
