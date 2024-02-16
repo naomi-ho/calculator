@@ -1,0 +1,45 @@
+body {
+    background-color: rgb(67, 91, 120);
+    color: white;
+    font-family: Helvetica, sans-serif;
+}
+
+.display {
+    background-color: rgb(61, 59, 59);
+    width: 412px;
+    height: 120px;
+    margin-bottom: 4px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+button {
+    border-radius: 0%;
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    width: 100px;
+    height: 80px;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.action {
+    background-color: rgb(90, 87, 87);
+}
+
+.number {
+    background-color: rgb(134, 128, 128);
+}
+
+.operator {
+    background-color: orange;
+}
+
+#zero {
+    width: 204px;
+    border-bottom-left-radius: 10px;
+}
+
+#equal {
+    border-bottom-right-radius: 10px;
+}
