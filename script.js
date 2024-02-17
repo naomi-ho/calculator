@@ -5,6 +5,7 @@ let result = 0;
 
 const numbers = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
+const operators = document.querySelectorAll(".operator");
 
 // clicking on a button adds the number value to the display
 function populate() {
@@ -24,6 +25,29 @@ function populate() {
             console.log(displayInput, displayLength);
             return (displayInput, displayLength);
         });
+    }
+}
+
+function stageOneStore() {
+    for (let i = 0; i < operators.length; i++) {
+        let operation = operators[i];
+        let selectedOperator = false;
+
+        // store first number and operator when user clicks an operator button
+        operation.addEventListener("click", () => {
+            selectedOperator = true;
+            num1 = display.textContent;
+            operator = operation.textContent;
+            console.log(num1, operator);
+            return (num1, operator);
+        });
+
+        // clear operator value if this isn't the first time clicking an operator button
+        if (selectedOperator === true) {
+            operation.addEventListener("click", () => {
+                operation = "";
+            });
+        }
     }
 }
 
@@ -56,16 +80,22 @@ function operate(num1, num2, operator) {
         case "+":
             add(num1, num2);
             break;
-        case "-":
+        case "−":
             subtract(num1, num2);
             break;
-        case "*":
+        case "×":
             multiply(num1, num2);
             break;
-        case "/":
+        case "÷":
             divide(num1, num2);
             break;
     }
 }
 
-populate();
+function calculate() {
+    populate();
+    stageOneStore();
+    // operate(num1, num2, operator);
+}
+
+calculate();
