@@ -21,7 +21,7 @@ h1 {
 }
 
 body {
-    background-color: rgb(67, 91, 120);
+    background-color: hsl(213, 28%, 37%);
     color: white;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ body {
 }
 
 .display {
-    background-color: rgb(61, 59, 59);
+    background-color: hsl(0, 2%, 24%);
     width: 412px;
     height: 120px;
     margin-bottom: 4px;
@@ -49,18 +49,43 @@ button {
     height: 80px;
     margin-bottom: 4px;
     color: white;
+    cursor: pointer;
 }
 
 .action {
-    background-color: rgb(90, 87, 87);
+    background-color: hsl(0, 2%, 35%);
+}
+
+.action:hover {
+    background-color: hsl(0, 2%, 45%);
+}
+
+.action:active {
+    background-color: hsl(0, 2%, 55%);
 }
 
 .number {
-    background-color: rgb(134, 128, 128);
+    background-color: hsl(0, 2%, 51%);
+}
+
+.number:hover {
+    background-color: hsl(0, 2%, 61%);
+}
+
+.number:active {
+    background-color: hsl(0, 2%, 71%);
 }
 
 .operator {
     background-color: orange;
+}
+
+.operator:hover {
+    background-color: hsl(39, 100%, 70%);
+}
+
+.operator:active {
+    background-color: hsl(39, 100%, 80%);
 }
 
 #zero {
