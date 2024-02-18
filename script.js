@@ -6,7 +6,7 @@ let result = 0;
 let num1Stored = false;
 
 const numbers = document.querySelectorAll(".number");
-let display = document.querySelector(".display").textContent;
+let display = document.querySelector(".display");
 let displayLength = document.querySelector(".display").textContent.length;
 const operators = document.querySelectorAll(".operator");
 const ac = document.querySelector("#ac");
@@ -25,15 +25,14 @@ function populate() {
         number.addEventListener("click", () => {
             displayLength++;
             if (displayLength > 11 && displayLength < 18) {
-                display.style.fontSize = "200%";
-                display.style.paddingTop = "40px";
+                display.textContent.style.fontSize = "200%";
+                display.textContent.style.paddingTop = "40px";
             } else if (displayLength >= 18) {
                 number.disabled = true;
             }
-            display += number.textContent;
-            console.log(display, displayLength);
-            return (display, displayLength);
-
+            display.textContent += number.textContent;
+            console.log(display.textContent, displayLength);
+            return (display.textContent, displayLength);
         });
     }
 }
@@ -48,7 +47,7 @@ function store() {
         operation.addEventListener("click", () => {
             selectedOperator = true;
             num1Stored = true;
-            num1 = display;
+            num1 = display.textContent;
             operator = operation.textContent;
             console.log(num1, operator);
             return (num1, operator);
