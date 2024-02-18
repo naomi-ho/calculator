@@ -50,6 +50,7 @@ button {
     margin-bottom: 4px;
     color: white;
     cursor: pointer;
+    font-family: 'Roboto';
 }
 
 .action {
