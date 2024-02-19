@@ -28,16 +28,28 @@ body {
     align-items: center;
 }
 
-.display {
+.display-container {
     background-color: hsl(0, 2%, 24%);
     width: 412px;
     height: 120px;
     margin-bottom: 4px;
     border-radius: 10px 10px 0px 0px;
     text-align: right;
-    padding-top: 30px;
+}
+
+#top-display {
+    width: inherit;
+    height: 60px;
+    font-size: 20px;
+    padding-top: 20px;
     padding-right: 35px;
-    font-size: 50px;
+}
+
+#bottom-display {
+    width: inherit;
+    height: 60px;
+    font-size: 40px;
+    padding-right: 35px;
 }
 
 button {
