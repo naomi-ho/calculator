@@ -1,122 +1,82 @@
-let num1 = 0;
-let num2 = 0;
-let operator;
-let equation = [];
-let result = 0;
-let num1Stored = false;
+let currentDisplay = ''; // Variable to store the current display value
+let operator = ''; // Variable to store the current operator
+let previousValue = ''; // Variable to store the previous value before applying an operator
 
-const numbers = document.querySelectorAll(".number");
-let display = document.querySelector(".display");
-let displayLength = document.querySelector(".display").textContent.length;
-const operators = document.querySelectorAll(".operator");
-const ac = document.querySelector("#ac");
+const topDisplay = document.querySelector("#top-display");
+const bottomDisplay = document.querySelector("#bottom-display");
 
-// clear calculator by reloading page
-function clear() {
-    ac.addEventListener("click", () => {
-    location.reload();
-    });
+// Function to update the display with the provided value
+function updateDisplay(value) {
+    bottomDisplay.textContent = value;
 }
 
-// clicking on a button adds the number value to the display
-function populate() {
-    for (let i = 0; i < numbers.length; i++) {
-        let number = numbers[i];
-        number.addEventListener("click", () => {
-            displayLength++;
-            if (displayLength > 11 && displayLength < 18) {
-                display.textContent.style.fontSize = "200%";
-                display.textContent.style.paddingTop = "40px";
-            } else if (displayLength >= 18) {
-                number.disabled = true;
-            }
-            display.textContent += number.textContent;
-            console.log(display.textContent, displayLength);
-            return (display.textContent, displayLength);
-        });
+// Function to append a number to the current display value
+function appendNumber(number) {
+    currentDisplay += number;
+    updateDisplay(currentDisplay);
+}
+
+// Function to append a decimal point to the current display value
+function appendDecimal() {
+    if (!currentDisplay.includes('.')) {
+        currentDisplay += '.';
+        updateDisplay(currentDisplay);
     }
 }
 
-function store() {
-    for (let i = 0; i < operators.length; i++) {
-        let operation = operators[i];
-        let selectedOperator = false;
-
-
-        // store first number and operator when user clicks an operator button
-        operation.addEventListener("click", () => {
-            selectedOperator = true;
-            num1Stored = true;
-            num1 = display.textContent;
-            operator = operation.textContent;
-            console.log(num1, operator);
-            return (num1, operator);
-        });
-
-        // clear operator value if this isn't the first time clicking an operator button
-        if (selectedOperator === true) {
-            operation.addEventListener("click", () => {
-                operation = "";
-                display.textContent = "";
-            });
-        }
-    }
+// Function to set the operator
+function setOperator(op) {
+    operator = op;
+    previousValue = currentDisplay;
+    currentDisplay = '';
+    topDisplay.textContent = previousValue + ' ' + operator;
 }
 
-// function execute() {
-//     // clear display when clicking first digit of second number
-//     for (let i = 0; i < numbers.length; i++) {
-//         let number = numbers[i];
-//         number.addEventListener("click", () => {
-//             di
-//         });
-//     // run populate() again
-//     // run operate() when user clicks the equal button
-// }
-
-function add(num1, num2) {
-    console.log(`${result}`);
-    return result = num1 + num2;
-}
-
-function subtract(num1, num2) {
-    console.log(result);
-    return result = num1 - num2;
-}
-
-function multiply(num1, num2) {
-    console.log(result);
-    return result = num1 * num2;
-}
-
-function divide(num1, num2) {
-    console.log(result);
-    return result = num1 / num2;
-}
-
-function operate(num1, num2, operator) {
-    switch(operator) {
-        case "+":
-            add(num1, num2);
-            break;
-        case "−":
-            subtract(num1, num2);
-            break;
-        case "×":
-            multiply(num1, num2);
-            break;
-        case "÷":
-            divide(num1, num2);
-            break;
-    }
-}
-
+// Function to perform the calculation
 function calculate() {
-    populate();
-    store();
-    clear();
-    // execute();
-    // operate(num1, num2, operator);
+    let result;
+    const currentValue = parseFloat(currentDisplay);
+
+    switch (operator) {
+        case '+':
+            result = parseFloat(previousValue) + currentValue;
+            break;
+        case '-':
+            result = parseFloat(previousValue) - currentValue;
+            break;
+        case '*':
+            result = parseFloat(previousValue) * currentValue;
+            break;
+        case '/':
+            result = parseFloat(previousValue) / currentValue;
+            break;
+        default:
+            return;
+    }
+
+    updateDisplay(result);
+    currentDisplay = result;
+    topDisplay.textContent = '';
 }
 
-calculate();
+// Function to clear the calculator
+function clearCalc() {
+    currentDisplay = '';
+    operator = '';
+    previousValue = '';
+    updateDisplay('');
+    topDisplay.textContent = '';
+}
+
+// Function to remove the last character from the current display value
+function remove() {
+    currentDisplay = currentDisplay.slice(0, -1);
+    updateDisplay(currentDisplay);
+}
+
+// Function to calculate the percentage of the current display value
+function percent() {
+    const percentage = parseFloat(currentDisplay) / 100;
+    updateDisplay(percentage);
+    currentDisplay = percentage;
+}
